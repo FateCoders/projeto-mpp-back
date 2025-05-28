@@ -19,3 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('/pedido', [PedidoController::class, 'realizarPedido']);
+Route::get('/pedido/{id}', [PedidoController::class, 'verPedido']);
