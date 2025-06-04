@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TokenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,4 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/usuario', [AuthController::class, 'usuario']);
     Route::post('/logout', [AuthController::class, 'logout']);
 });
+Route::middleware('auth:sanctum')->get('/verificar-token', [TokenController::class, 'verificar']);
