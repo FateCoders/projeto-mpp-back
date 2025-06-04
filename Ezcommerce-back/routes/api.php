@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('/pedido', [PedidoController::class, 'realizarPedido']);
 Route::get('/pedido/{id}', [PedidoController::class, 'verPedido']);
+// routes/api.php
+Route::post('/registrar', [UsuarioController::class, 'registrar']);
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/usuario', [AuthController::class, 'usuario']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
