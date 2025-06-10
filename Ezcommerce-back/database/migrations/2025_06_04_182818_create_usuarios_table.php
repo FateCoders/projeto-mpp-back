@@ -11,13 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-     Schema::create('usuarios', function (Blueprint $table) {
-        $table->id();
-        $table->string('nome');
-        $table->string('email')->unique();
-        $table->string('senha');
-        $table->timestamps();
-    });
+        Schema::create('usuarios', function (Blueprint $table) {
+            $table->id();
+            $table->string('nome');
+            $table->string('email')->unique();
+            $table->string('senha');
+            $table->string('telefone')->nullable();
+            $table->string('cep')->nullable();
+            $table->string('endereco')->nullable();
+            $table->string('bairro')->nullable();
+            $table->string('cidade')->nullable();
+            $table->string('estado')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**

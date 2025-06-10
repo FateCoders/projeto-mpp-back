@@ -10,11 +10,21 @@ class Usuario extends Authenticatable
 {
     use HasApiTokens, Notifiable;
 
-    protected $table = 'usuarios'; // se sua tabela no banco for 'usuarios'
-    
-    protected $fillable = ['nome', 'email', 'senha'];
+    protected $table = 'usuarios';
 
-    protected $hidden = ['senha', 'remember_token']; // oculta a senha nas respostas JSON
+    protected $fillable = [
+        'nome', 
+        'email', 
+        'senha',
+        'telefone',
+        'cep',
+        'endereco',
+        'bairro',
+        'cidade',
+        'estado'
+    ];
+
+    protected $hidden = ['senha', 'remember_token'];
 
     public function pedidos()
     {
