@@ -85,27 +85,26 @@ public function confirmarCompra(Request $request, $id)
 }
 
 
-    public function listarPedidos()
-    {
+    public function listarPedidos(){
         return response()->json(Pedido::with(['usuario', 'produto'])->get());
     }
 
-    public function verPedido($id)
-    {
+    public function verPedido($id){
         $pedido = Pedido::with(['usuario', 'produto'])->findOrFail($id);
         return response()->json($pedido);
     }
-    public function verPedidosByUserId($id)
-{
-    $pedidos = Pedido::with(['usuario', 'produto'])
-        ->where('id_user_fk', $id)
-        ->get();
 
-    if ($pedidos->isEmpty()) {
-        return response()->json(['mensagem' => 'Nenhum pedido encontrado para este usuário.'], 404);
+   public function produtosComprados($id)
+{
+    $produtos = Produto::whereHas('pedidos', function ($query) use ($id) {
+        $query->where('id_user_fk', $id);
+    })->get();
+
+    if ($produtos->isEmpty()) {
+        return response()->json(['mensagem' => 'Nenhum produto encontrado para este usuário.'], 404);
     }
 
-    return response()->json($pedidos);
+    return response()->json($produtos);
 }
 
 }
