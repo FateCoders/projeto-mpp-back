@@ -18,7 +18,7 @@ return new class extends Migration
         $table->text('descricao');
         $table->decimal('preco', 10, 2);
         $table->integer('quantidade');
-        $table->longText('imagem_base64')->nullable();
+        $table->longText('imagem')->nullable();
         $table->timestamps();
     });
 }

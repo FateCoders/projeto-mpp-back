@@ -38,13 +38,8 @@ class ProdutosSeeder extends Seeder
 
         foreach ($categorias as $categoria => $produtos) {
             foreach ($produtos as $index => $produto) {
-                // Monta o caminho da imagem (ex: public/images/roupas/produto1.jpg)
-                $caminhoImagem = public_path("images/{$categoria}/produto" . ($index + 1) . ".jpg");
-
-                $imagemBase64 = null;
-                if (file_exists($caminhoImagem)) {
-                    $imagemBase64 = base64_encode(file_get_contents($caminhoImagem));
-                }
+                // Supondo que as imagens estejam em public/images/{categoria}/produto{n}.jpg
+                $urlImagem = url("images/{$categoria}/produto" . ($index + 1) . ".jpg");
 
                 DB::table('produtos')->insert([
                     'nome' => $produto['nome'],
@@ -52,7 +47,7 @@ class ProdutosSeeder extends Seeder
                     'descricao' => $produto['descricao'],
                     'preco' => $produto['preco'],
                     'quantidade' => $produto['quantidade'],
-                    'imagem_base64' => $imagemBase64,
+                    'imagem' => $urlImagem, // Alterado para imagem_url em vez de imagem_base64
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]);
