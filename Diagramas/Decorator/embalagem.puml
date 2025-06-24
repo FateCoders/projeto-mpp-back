@@ -1,0 +1,17 @@
+@startuml
+namespace App.Decorators {
+    interface PedidoInterface {
+        + getDescricao() : string
+        + getValor() : float
+    }
+
+    class EmbalagemPresenteDecorator implements PedidoInterface {
+        - pedido : PedidoInterface
+        + __construct(pedido : PedidoInterface)
+        + getDescricao() : string
+        + getValor() : float
+    }
+
+    EmbalagemPresenteDecorator --> PedidoInterface : decorates
+}
+@enduml

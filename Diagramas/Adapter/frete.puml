@@ -1,0 +1,15 @@
+@startuml
+namespace App.Adapters {
+    class FreteAPIExterna {
+        + calcularFrete(cep : string) : string
+    }
+
+    class FreteServiceAdapter {
+        - api : FreteAPIExterna
+        + __construct()
+        + calcular(cep : string) : string
+    }
+
+    FreteServiceAdapter --> FreteAPIExterna : usa
+}
+@enduml

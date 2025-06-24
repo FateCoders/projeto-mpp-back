@@ -1,0 +1,22 @@
+@startuml
+namespace App.Factories {
+    class PagamentoFactory {
+        + static make(tipo : string) : PagamentoInterface
+    }
+}
+
+namespace App.Services {
+    class PagamentoCartao
+    class PagamentoPix
+}
+
+namespace App.Interfaces {
+    interface PagamentoInterface
+}
+
+PagamentoFactory ..> PagamentoInterface : retorna
+PagamentoFactory ..> PagamentoCartao : cria
+PagamentoFactory ..> PagamentoPix : cria
+PagamentoCartao ..|> PagamentoInterface
+PagamentoPix ..|> PagamentoInterface
+@enduml

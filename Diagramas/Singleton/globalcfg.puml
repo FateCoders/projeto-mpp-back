@@ -1,0 +1,11 @@
+@startuml
+namespace App.Singletons {
+    class ConfigGlobal {
+        - static $instance : ConfigGlobal
+        + $moeda : string = "BRL"
+        + $idioma : string = "pt-BR"
+        - __construct()
+        + static getInstance() : ConfigGlobal
+    }
+}
+@enduml
