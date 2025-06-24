@@ -1,0 +1,14 @@
+@startuml
+namespace App.Providers {
+    class AuthServiceProvider extends ServiceProvider {
+        - policies : array
+        + boot() : void
+    }
+}
+
+namespace Illuminate\Foundation\Support\Providers {
+    class ServiceProvider
+}
+
+AuthServiceProvider --|> ServiceProvider
+@enduml

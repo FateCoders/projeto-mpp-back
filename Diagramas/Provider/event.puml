@@ -1,0 +1,15 @@
+@startuml
+namespace App.Providers {
+    class EventServiceProvider extends ServiceProvider {
+        - listen : array
+        + boot() : void
+        + shouldDiscoverEvents() : bool
+    }
+}
+
+namespace Illuminate\Foundation\Support\Providers {
+    class ServiceProvider
+}
+
+EventServiceProvider --|> ServiceProvider
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+namespace App.Providers {
+    class RouteServiceProvider extends ServiceProvider {
+        {static} HOME : string = "/home"
+        + boot() : void
+    }
+}
+
+namespace Illuminate\Foundation\Support\Providers {
+    class ServiceProvider
+}
+
+RouteServiceProvider --|> ServiceProvider
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+namespace App.Providers {
+    class BroadcastServiceProvider extends ServiceProvider {
+        + boot() : void
+    }
+}
+
+namespace Illuminate\Support {
+    class ServiceProvider
+}
+
+BroadcastServiceProvider --|> ServiceProvider
+@enduml
